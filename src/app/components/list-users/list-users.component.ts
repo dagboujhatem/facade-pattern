@@ -4,12 +4,9 @@ import { CrudFacade } from '../../services/crudFacade.service';
 
 @Component({
   selector: 'app-list-users',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
   template: `
   <div>
+  <a routerLink="/users/add"> create new user </a>
     <ul>
       @for (user of (userfacade.usersList | async); track user.id) {
         <li>{{ user.firstName }}</li>
@@ -26,7 +23,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getAllUsers();
+    this.userfacade.getAllUsers();
   }
 
 

@@ -1,0 +1,15 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "firstName": "Hatem",
+            "lastName": "Daghbouj",
+            "email": "hatem@gmail.com",
+            "password": "H123"
+        }
+    ],
+    "posts": [],
+    "profile": {
+        "name": "Hatem"
+    }
+}

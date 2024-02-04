@@ -7,6 +7,8 @@ import { User } from '../model/User';
   providedIn: 'root'
 })
 export class CrudFacade {
+  // State managment in Angular (Rxjs, NgRx)
+  // Rxjs: Observable, Subject, BehaviorSubject, ReplaySubject, AsyncSubject: data service
   public usersList: BehaviorSubject<User[] | null> = new BehaviorSubject<User[] | null >(null);
 
 
