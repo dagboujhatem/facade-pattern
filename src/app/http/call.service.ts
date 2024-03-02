@@ -19,8 +19,8 @@ export class CallService {
     return this._http.get<User[]>(`${this._baseUrl}/users`);
   }
 
-  public addNewUser(payload: CreateUserDto): Observable<Message> {
-    return this._http.post<Message>(`${this._baseUrl}/users`, payload);
+  public addNewUser(payload: CreateUserDto): Observable<any> {
+    return this._http.post<any>(`${this._baseUrl}/users`, payload);
   }
 
   public getUserById(id: number): Observable<User> {

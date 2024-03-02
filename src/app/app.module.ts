@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],

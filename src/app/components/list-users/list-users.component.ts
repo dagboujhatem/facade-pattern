@@ -10,6 +10,8 @@ import { CrudFacade } from '../../services/crudFacade.service';
     <ul>
       @for (user of (userfacade.usersList | async); track user.id) {
         <li>{{ user.firstName }}</li>
+        <button [routerLink]="['/users/update/', user.id]">Update</button>
+        <button (click)="deleteUser(user.id)">Delete</button>
       }
     </ul>
   </div>`,
@@ -23,10 +25,17 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userfacade.getAllUsers();
+    // this.userfacade.getAllUsers(); // J'amais on appel subscribe (dans le composant)
   }
 
 
+  deleteUser(id: number){
+    this.userfacade.deleteUser(id)
+    .then(result => {
+      // refresh list of users
+    })
+    .catch(error => {});
+  }
 
 
 }

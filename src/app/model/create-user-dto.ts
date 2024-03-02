@@ -1,7 +1,4 @@
-export interface CreateUserDto { 
-    id?: number;
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    password?: string;
+import { User } from "./User";
+
+export interface CreateUserDto extends Partial<User>  { 
 }

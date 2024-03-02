@@ -1,4 +1,4 @@
-import { CreateUserDto } from "./create-user-dto";
+import { User } from "./User";
 
-export interface UpdateUserDto extends Partial<CreateUserDto> { 
+export interface UpdateUserDto extends Partial<User> { 
 }
