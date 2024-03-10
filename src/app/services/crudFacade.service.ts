@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/User';
 import { CreateUserDto } from '../model/create-user-dto';
 import { Message } from '../model/Message';
+import { Router } from '@angular/router';
+import { UpdateUserDto } from '../model/update-user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class CrudFacade {
   public selectedUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
 
-  constructor(private _callService: CallService) { }
+  constructor(private _callService: CallService, private _router: Router) { }
 
   public getAllUsers() {
     if (this.usersList.getValue() === null) {
@@ -35,6 +37,7 @@ export class CrudFacade {
       .subscribe((messsage: Message) => {
         // Toast Message 
         // Route redirection 
+        this._router.navigateByUrl('/users')
       })
   }
 
@@ -42,7 +45,7 @@ export class CrudFacade {
     // using Promise : to return a value after deleting with success
     // reject: return with error
     // resolve: return with success
-    return new Promise((reject, resolve) => {
+    return new Promise(( resolve, reject) => {
       this._callService.deleteUserById(id)
         .subscribe((messsage: Message) => {
           // Toast message
@@ -70,10 +73,21 @@ export class CrudFacade {
     // })
 
     // 2nd way (recommended if we have same data in the list) 
-    const user = this.usersList.getValue()?.filter((u) => u.id === id);
-    if (user && user[0]) {
-      this.selectedUser.next(user[0])
-    }
+    return new Promise(( resolve, reject) => {
+      const user = this.usersList.getValue()?.filter((u) => u.id === id);
+      if (user && user[0]) {
+        this.selectedUser.next(user[0])
+        resolve(user[0])
+      }
+    });
   }
 
+  public updateUser(data: UpdateUserDto) {
+    this._callService.addNewUser(data)
+      .subscribe((messsage: Message) => {
+        // Toast Message 
+        // Route redirection 
+        this._router.navigateByUrl('/users')
+      })
+  }
 }
